@@ -32,6 +32,7 @@ However, if you need to build a blog system, again this project can be used as a
 
 * List of blog articles showing the **title**, **body** truncated to 100 characters, and **date**. It should show only the latest 5 articles
 * Single blog article showing the **title**, **full body**, and the **date**
+* List of article comments showing the **date**, **author name** and **content**
 
 #### The Backend
 
@@ -39,6 +40,7 @@ However, if you need to build a blog system, again this project can be used as a
 * Possibility to add a new blog article with a title and body. The title should allow a maximum of 50 characters
 * Possibility to edit an existing blog article
 * Possibility to delete an article
+* Possibility to comment a blog article by specifying its **author name** and its **content**
 * Logout feature for the admin user
 
 HTML and CSS code should be kept to the minimum needed to make the website functional – This project is purely to assess how you approach the problem and not how good it looks.
