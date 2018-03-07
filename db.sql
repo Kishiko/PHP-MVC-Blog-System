@@ -29,6 +29,17 @@ INSERT INTO Posts (title, body, createdDate) VALUES
 (@sPostTitle, @sPostBody, @sPostDate);
 
 
+CREATE TABLE IF NOT EXISTS Comments (
+  id int(10) unsigned NOT NULL AUTO_INCREMENT,
+  content longtext NOT NULL,
+  authorName varchar(60) NOT NULL,
+  idPost int(10) unsigned,
+  createdDate datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (id),
+  FOREIGN KEY (idPost) REFERENCES Posts(id)
+) DEFAULT CHARSET=utf8;
+
+
 CREATE TABLE IF NOT EXISTS Admins (
   id int(10) unsigned NOT NULL AUTO_INCREMENT,
   email varchar(120) NOT NULL,

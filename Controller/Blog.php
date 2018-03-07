@@ -44,6 +44,7 @@ class Blog
     public function post()
     {
         $this->oUtil->oPost = $this->oModel->getById($this->_iId); // Get the data of the post
+        $this->oUtil->oComments = $this->oModel->getPostComments($this->_iId); 
 
         $this->oUtil->getView('post');
     }

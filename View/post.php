@@ -25,6 +25,40 @@
         ?>
     </article>
 
+    <br>
+    <aside>
+        <h3>Comments</h3>
+
+        <?php if (empty($this->oComments)): ?>
+            <p class="error">This post has any comment. Be the first to comment!</p>
+        <?php else: ?>
+            
+            <?php foreach ($this->oComments as $oComment): ?>
+                <h6>On <?= $oComment->createdDate ?></h6>
+                <h4><?= $oComment->authorName ?> <em>said:</em></h4>
+                <p><?= $oComment->content ?></p>
+                <hr class="clear" /><br />
+            <?php endforeach ?>
+
+        <?php endif ?>
+
+        <h4>Add a new comment</h4>
+        <form action="<?=ROOT_URL?>?p=comment&a=add" method="post">
+
+            <input type="hidden" name="id_post" value="<?=$this->oPost->id?>" />
+
+            <p><label for="author_name">Your name:</label><br />
+                <input type="text" name="author_name" id="author_name" required="required" />
+            </p>
+
+            <p><label for="content">Content:</label><br />
+                <textarea name="content" id="content" rows="5" cols="35" required="required"></textarea>
+            </p>
+
+            <p><input type="submit" name="add_comment" value="Post a comment" /></p>
+        </form>
+    </aside>
+
 <?php endif ?>
 
 <?php require 'inc/footer.php' ?>
