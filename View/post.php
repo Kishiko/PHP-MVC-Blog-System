@@ -43,7 +43,7 @@
         <?php endif ?>
 
         <h4>Add a new comment</h4>
-        <form action="<?=ROOT_URL?>?p=comment&a=add" method="post">
+        <form action="<?=ROOT_URL?>?p=comment&amp;a=add" method="post">
 
             <input type="hidden" name="id_post" value="<?=$this->oPost->id?>" />
 

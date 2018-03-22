@@ -11,12 +11,10 @@ namespace TestProject\Model;
 class Blog
 {
     protected $oDb;
-    private $oCommentModel;
 
     public function __construct()
     {
         $this->oDb = new \TestProject\Engine\Db;
-        $this->oCommentModel = new \TestProject\Model\Comment;
     }
 
     public function get($iOffset, $iLimit)
@@ -32,11 +30,6 @@ class Blog
     {
         $oStmt = $this->oDb->query('SELECT * FROM Posts ORDER BY createdDate DESC');
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
-    }
-
-    public function getPostComments($iPostId)
-    {
-        return $this->oCommentModel->getPostComments($iPostId);
     }
 
     public function add(array $aData)

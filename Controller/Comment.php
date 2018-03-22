@@ -8,21 +8,17 @@
 
 namespace TestProject\Controller;
 
-class Comment
+class Comment extends Blog
 {
-    protected $oUtil, $oModel;
+    private $oCommentModel;
 
     public function __construct()
     {
-        // Enable PHP Session
-        if (empty($_SESSION))
-            @session_start();
-
-        $this->oUtil = new \TestProject\Engine\Util;
-
+        parent::__construct();
+        
         /** Get the Model class in all the controller class **/
         $this->oUtil->getModel('Comment');
-        $this->oModel = new \TestProject\Model\Comment;
+        $this->oCommentModel = new \TestProject\Model\Comment;
     }
 
     public function add()
@@ -38,7 +34,7 @@ class Comment
                     'created_date' => date('Y-m-d H:i:s')
                 );
 
-                if ($this->oModel->add($aData))
+                if ($this->oCommentModel->add($aData))
                     header('Location:' . ROOT_URL . '?p=blog&a=post&id=' . $_POST['id_post']);
                 else
                     $this->oUtil->sErrMsg = 'Whoops! An error has occurred! Please try again later.';

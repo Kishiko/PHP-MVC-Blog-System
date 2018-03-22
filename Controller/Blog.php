@@ -12,7 +12,7 @@ class Blog
 {
     const MAX_POSTS = 5;
 
-    protected $oUtil, $oModel;
+    protected $oUtil, $oModel, $oCommentModel;
     private $_iId;
 
     public function __construct()
@@ -26,6 +26,7 @@ class Blog
         /** Get the Model class in all the controller class **/
         $this->oUtil->getModel('Blog');
         $this->oModel = new \TestProject\Model\Blog;
+        $this->oCommentModel = new \TestProject\Model\Comment;
 
         /** Get the Post ID in the constructor in order to avoid the duplication of the same code **/
         $this->_iId = (int) (!empty($_GET['id']) ? $_GET['id'] : 0);
@@ -44,7 +45,7 @@ class Blog
     public function post()
     {
         $this->oUtil->oPost = $this->oModel->getById($this->_iId); // Get the data of the post
-        $this->oUtil->oComments = $this->oModel->getPostComments($this->_iId); 
+        $this->oUtil->oComments = $this->oCommentModel->getPostComments($this->_iId); 
 
         $this->oUtil->getView('post');
     }
