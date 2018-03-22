@@ -10,11 +10,9 @@ namespace TestProject\Controller;
 
 class Comment extends Blog
 {
-    private $oCommentModel;
-
     public function __construct()
     {
-        parent::__construct();
+        $this->oUtil = new \TestProject\Engine\Util;
         
         /** Get the Model class in all the controller class **/
         $this->oUtil->getModel('Comment');
